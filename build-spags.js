@@ -1,19 +1,31 @@
 /**
 *
-* Build Single Product Ad Groups
+* @name Build Single Product Ad Groups (SPAGS)
 * 
-* Populates a Google Sheet with Single Product Ad Groups
-* for Google Shopping campaigns using a list of product IDs.
+* @overview Populates a Google Sheet with Single Product Ad Groups
+*     for Google Shopping campaigns using a list of product IDs 
+*     and product names.
 *
-* Version: 1.0
-* Google Apps Script maintained by Frederic Harnois
+* @author Frederick Harnois
+* @author Sam Lalonde
+*
+* @version 1.0.1
+*
+* @changelog
+* - version 1.0.1
+*   - Renamed the "IDs" sheet, "Products"
+*   - Added "Ad Group" column to "Products Sheet"
+*   - Ad Group names now take from from "Products" column
+*   - New spreadsheet URL added for the new column name
+* - version: 1.0
+*   - Released initial version.
 *
 **/
 
 // MODIFY YOUR SETTINGS HERE //
 
 // url of the google sheets where the trafficking sheet is
-var SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1gjct0NPWKOW8xAH28v8iiwZRIo0iBqITvSrB3D5Amm0/edit#gid=0"
+var SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1gurCCj3j85umjGVhSIP1Sdo0VZTm8lOJdDoCpe55_1c/edit#gid=0"
 
 var CAMPAIGN_NAME = "INSERT_CAMPAIGN_NAME"
 
@@ -30,7 +42,7 @@ function spagBuilder() {
   var spags = ss.getSheetByName("SPAGs");
   
   // Selects the tab with your list of IDs
-  var ids = ss.getSheetByName("IDs");
+  var ids = ss.getSheetByName("Products");
   
   // Clears the sheet
   spags.clear();
@@ -38,6 +50,9 @@ function spagBuilder() {
   // Adds a header row
   spags.appendRow(["Campaign", "Ad Group", "Product Group", "Max CPC", "Product Group Type"])
   
+  // Column name setting
+  var adgroup = "Ad Group"
+
   // Goes through each ID and populates each column
   var campaignCol = []
   var adGroupCol = []
@@ -45,12 +60,13 @@ function spagBuilder() {
   var maxCpcCol = []
   var productGroupTypeCol = []
   var row = 2
-  while (ids.getRange(row,1).isBlank() === false) {
-    var id = ids.getRange(row,1).getValue();
-    var title = ids.getRange(row,2).getValue();
+  while (ids.getRange(row,2).isBlank() === false) {
+    var id = ids.getRange(row,2).getValue();
+    var adgroup = ids.getRange(row,1).getValue();
+    var title = ids.getRange(row,1).getValue();
     campaignCol.push([CAMPAIGN_NAME], [CAMPAIGN_NAME], [CAMPAIGN_NAME]);
     Utilities.sleep(5);
-    adGroupCol.push([id], [id], [id]);
+    adGroupCol.push([adgroup], [adgroup], [adgroup]);
     Utilities.sleep(5);
     productGroupCol.push(["* / Item ID='" + id + "'"], ["* / Item ID=*"], ["* /"]);
     Utilities.sleep(5);
