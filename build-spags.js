@@ -13,7 +13,7 @@
 // MODIFY YOUR SETTINGS HERE //
 
 // url of the google sheets where the trafficking sheet is
-var SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1gurCCj3j85umjGVhSIP1Sdo0VZTm8lOJdDoCpe55_1c/edit#gid=0"
+var SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1dJghdjA1UK5Kd_wMRn8TDeXq4SAeYq1zlb3_QVxsPuA/edit#gid=0"
 
 var CAMPAIGN_NAME = "INSERT_CAMPAIGN_NAME"
 
