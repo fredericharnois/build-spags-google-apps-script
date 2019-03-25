@@ -1,24 +1,12 @@
 /**
 *
-* @name Build Single Product Ad Groups (SPAGS)
+* Build Single Product Ad Groups (SPAGS)
 * 
-* @overview Populates a Google Sheet with Single Product Ad Groups
-*     for Google Shopping campaigns using a list of product IDs 
-*     and product names.
+* This script populates a Google Sheet with Single Product Ad Groups
+* for Google Shopping campaigns using a list of product IDs & product names.
 *
-* @author Frederick Harnois
-* @author Sam Lalonde
-*
-* @version 1.0.1
-*
-* @changelog
-* - version 1.0.1
-*   - Renamed the "IDs" sheet, "Products"
-*   - Added "Ad Group" column to "Products Sheet"
-*   - Ad Group names now take from from "Products" column
-*   - New spreadsheet URL added for the new column name
-* - version: 1.0
-*   - Released initial version.
+* Original author: Frederick Harnois
+* Additional tweaks: Sam Lalonde - sam@samlalonde.com
 *
 **/
 
