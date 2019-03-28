@@ -13,7 +13,6 @@
 // MODIFY YOUR SETTINGS HERE //
 
 // url of the google sheets where the trafficking sheet is
-var SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/1dJghdjA1UK5Kd_wMRn8TDeXq4SAeYq1zlb3_QVxsPuA/edit#gid=0"
 
 var CAMPAIGN_NAME = "INSERT_CAMPAIGN_NAME"
 
@@ -24,7 +23,7 @@ var MAX_CPC = 3
 function spagBuilder() {
 
   // Selects the chosen sheet
-  var ss = SpreadsheetApp.openByUrl(SPREADSHEET_URL);
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
   
   // Selects the tab where the ad groups will be built
   var spags = ss.getSheetByName("SPAGs");

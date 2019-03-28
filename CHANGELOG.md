@@ -1,6 +1,13 @@
+## v1.0.2
+
+> 2019-03-28
+
+* Added a button to execute script
+* Script just uses active sheet now, removing need to add a spreadsheet URL
+
 ## v1.0.1
 
-> 2017-12-17
+> 2019-03-25
 
 * Renamed the "IDs" sheet, "Products"
 * Added "Ad Group" column to "Products Sheet"
@@ -10,7 +17,7 @@
 
 ## v1.0.0
 
-> 2017-03-03
+> 2019-03-03
 
 * Released initial version.
 
