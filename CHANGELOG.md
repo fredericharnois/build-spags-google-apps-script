@@ -4,6 +4,7 @@
 
 * Added a button to execute script
 * Script just uses active sheet now, removing need to add a spreadsheet URL
+* Campaign name & default bid are now input in the products tab
 
 ## v1.0.1
 

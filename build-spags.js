@@ -1,6 +1,6 @@
 /**
 *
-* Build Single Product Ad Groups (SPAGS)
+* Build Single Product Ad Groups (SPAGs)
 * 
 * This script populates a Google Sheet with Single Product Ad Groups
 * for Google Shopping campaigns using a list of product IDs & product names.
@@ -9,16 +9,6 @@
 * Additional tweaks: Sam Lalonde - sam@samlalonde.com
 *
 **/
-
-// MODIFY YOUR SETTINGS HERE //
-
-// url of the google sheets where the trafficking sheet is
-
-var CAMPAIGN_NAME = "INSERT_CAMPAIGN_NAME"
-
-var MAX_CPC = 3
-
-// DO NOT MODIFY ANYTHING BELOW //
 
 function spagBuilder() {
 
@@ -30,6 +20,12 @@ function spagBuilder() {
   
   // Selects the tab with your list of IDs
   var ids = ss.getSheetByName("Products");
+
+  // Gets campaign name
+  var CAMPAIGN_NAME = ids.getRange(2,3).getValue();
+  
+  // Gets default bid
+  var MAX_CPC = ids.getRange(2,4).getValue();
   
   // Clears the sheet
   spags.clear();
