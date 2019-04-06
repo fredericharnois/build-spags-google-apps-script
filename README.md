@@ -4,8 +4,8 @@ This script was built to quickly build single product ad groups for use in Googl
 
 ## Setup
 
-* Make a copy of this [Google Sheet](https://docs.google.com/spreadsheets/d/1gjct0NPWKOW8xAH28v8iiwZRIo0iBqITvSrB3D5Amm0/edit?usp=sharing)
-* Get your list of IDs and copy them to the "IDs" tab
-* Run the script
+* Make a copy of this [Google Sheet](https://docs.google.com/spreadsheets/d/1RFV-itxMNkZRjBhHd5kWrqFLWtONAQMFflOzFI-MCuA/edit#gid=1348114506)
+* Copy the your list of Product IDs and Product Names and copy them to the "Products" tab
+* Run the script by pressing the button
 * Copy the contents of the "SPAGs" tab to Google AdWords Editor under "Product Groups"
 * Create a Shopping ad for each new ad group
