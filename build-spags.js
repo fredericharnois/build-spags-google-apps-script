@@ -5,8 +5,10 @@
 * This script populates a Google Sheet with Single Product Ad Groups
 * for Google Shopping campaigns using a list of product IDs & product names.
 *
-* Original author: Frederick Harnois
-* Additional tweaks: Sam Lalonde - sam@samlalonde.com
+* Google Apps Script maintained by Frederic Harnois
+* fred@fredericharnois.com
+* Additional contributions from Sam Lalonde
+* sam@samlalonde.com 
 *
 **/
 
