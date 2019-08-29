@@ -12,6 +12,24 @@
 *
 **/
 
+// SETTINGS //
+
+var userProperties = PropertiesService.getUserProperties();
+
+var CAMPAIGN_NAME = userProperties.getProperty("campaignName")
+
+var MAX_CPC = userProperties.getProperty("defaultBid")
+
+var BUDGET = userProperties.getProperty("dailyBudget")
+
+var MERCHANT_ID = userProperties.getProperty("merchantId")
+
+var LOCATION_ID = JSON.parse(userProperties.getProperty("locationId")).id
+
+var COUNTRY_CODE = JSON.parse(userProperties.getProperty("locationId")).code
+
+// SETTINGS //
+
 function spagBuilder() {
 
   // Selects the chosen sheet
@@ -21,52 +39,56 @@ function spagBuilder() {
   var spags = ss.getSheetByName("SPAGs");
   
   // Selects the tab with your list of IDs
-  var ids = ss.getSheetByName("Products");
-
-  // Gets campaign name
-  var CAMPAIGN_NAME = ids.getRange(2,3).getValue();
-  
-  // Gets default bid
-  var MAX_CPC = ids.getRange(2,4).getValue();
+  var ids = ss.getSheetByName("IDs");
   
   // Clears the sheet
   spags.clear();
   
   // Adds a header row
-  spags.appendRow(["Campaign", "Ad Group", "Product Group", "Max CPC", "Product Group Type"])
+  spags.appendRow(["Campaign", "Budget", "Budget type", "Campaign Type", "Networks", "Languages", "Bid Strategy Type", "Bid Strategy Name", "Delivery method", "Targeting method", "Exclusion method", "Merchant Identifier", "Country of Sale", "Campaign Priority", "Flexible Reach", "Ad Group", "Max CPC", "Ad Group Type", "Shopping ad", "ID", "Product Group", "Product Group Type"]);
   
-  // Column name setting
-  var adgroup = "Ad Group"
-
+  spags.appendRow([CAMPAIGN_NAME, BUDGET, "Daily", "Shopping", "Google search", "All", "Enhanced CPC", "Enhanced", "Standard", "Location of presence", "Location of presence or Area of interest", MERCHANT_ID, COUNTRY_CODE, "Low", "[]", "", "", "", "", LOCATION_ID, "", ""]);
+  
   // Goes through each ID and populates each column
   var campaignCol = []
+  var flexibleReachCol = []
   var adGroupCol = []
+  var adGroupTypeCol = []
+  var shoppingAdCol = []
   var productGroupCol = []
   var maxCpcCol = []
   var productGroupTypeCol = []
   var row = 2
-  while (ids.getRange(row,2).isBlank() === false) {
+  while (ids.getRange(row,1).isBlank() === false) {
     var id = ids.getRange(row,2).getValue();
-    var adgroup = ids.getRange(row,1).getValue();
     var title = ids.getRange(row,1).getValue();
-    campaignCol.push([CAMPAIGN_NAME], [CAMPAIGN_NAME], [CAMPAIGN_NAME]);
+    campaignCol.push([CAMPAIGN_NAME], [CAMPAIGN_NAME], [CAMPAIGN_NAME], [CAMPAIGN_NAME], [CAMPAIGN_NAME]);
     Utilities.sleep(5);
-    adGroupCol.push([adgroup], [adgroup], [adgroup]);
+    flexibleReachCol.push(["Audiences"], [""], [""], [""], [""]);
     Utilities.sleep(5);
-    productGroupCol.push(["* / Item ID='" + id + "'"], ["* / Item ID=*"], ["* /"]);
+    adGroupCol.push([title], [title], [title], [title], [title]);
     Utilities.sleep(5);
-    maxCpcCol.push([MAX_CPC], [""], [""]);
+    adGroupTypeCol.push(["Default"], [""], [""], [""], [""]);
     Utilities.sleep(5);
-    productGroupTypeCol.push(["Biddable"], ["Excluded"], ["Subdivision"]);
+    shoppingAdCol.push([""], ["[]"], [""], [""], [""]);
+    Utilities.sleep(5); 
+    productGroupCol.push([""], [""], ["* / Item ID='" + id + "'"], ["* / Item ID=*"], ["* /"]);
+    Utilities.sleep(5);
+    maxCpcCol.push([MAX_CPC], [""], [MAX_CPC], [""], [""]);
+    Utilities.sleep(5);
+    productGroupTypeCol.push([""], [""], ["Biddable"], ["Excluded"], ["Subdivision"]);
     Utilities.sleep(5);
     row++
    }
   
   // Pushes columns to the sheet
-  spags.getRange(2, 1, campaignCol.length, 1).setValues(campaignCol)
-  spags.getRange(2, 2, campaignCol.length, 1).setValues(adGroupCol)
-  spags.getRange(2, 3, campaignCol.length, 1).setValues(productGroupCol)
-  spags.getRange(2, 4, campaignCol.length, 1).setValues(maxCpcCol)
-  spags.getRange(2, 5, campaignCol.length, 1).setValues(productGroupTypeCol)  
+  spags.getRange(3, 1, campaignCol.length, 1).setValues(campaignCol)
+  spags.getRange(3, 15, campaignCol.length, 1).setValues(flexibleReachCol)
+  spags.getRange(3, 16, campaignCol.length, 1).setValues(adGroupCol)
+  spags.getRange(3, 17, campaignCol.length, 1).setValues(maxCpcCol)
+  spags.getRange(3, 18, campaignCol.length, 1).setValues(adGroupTypeCol)
+  spags.getRange(3, 19, campaignCol.length, 1).setValues(shoppingAdCol)
+  spags.getRange(3, 21, campaignCol.length, 1).setValues(productGroupCol)
+  spags.getRange(3, 22, campaignCol.length, 1).setValues(productGroupTypeCol)
   
 }

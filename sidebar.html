@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+    <link href="https://ssl.gstatic.com/docs/script/css/add-ons1.css" rel="stylesheet">
+    <style>
+        .width-100 {
+          width: 100%;
+          }
+    </style>  
+    <title></title>
+</head>
+
+<body class="sidebar">
+    <form id="myForm" onsubmit="event.preventDefault(); google.script.run.processForm(this)">
+    <div class="block">
+        <label for="input"><b>Campaign Name</b></label><br>
+            <input class="width-100" id="campaign" placeholder="Shopping Campaign" type="text" name="campaignName" required><br>
+    </div>
+    <div class="block">
+        <label for="input"><b>Daily Budget</b></label><br>
+            <input class="width-100" id="budget" step="0.01" min="0" placeholder="10" type="number" name="dailyBudget" required><br>
+    </div>
+    <div class="block">
+        <label for="input"><b>Google Merchant ID</b></label><br>
+            <input class="width-100" id="merchant" placeholder="111111111" type="number" name="merchantId" required><br>
+    </div>
+    <div class="block">
+        <label for="select"><b>Location</b></label><br>
+            <select name="locationId" size="10" required>
+              <option value='{"id":2004, "code":"AF"}'>Afghanistan</option>
+              <option value='{"id":2008, "code":"AL"}'>Albania</option>
+              <option value='{"id":2010, "code":"AQ"}'>Antarctica</option>
+              <option value='{"id":2012, "code":"DZ"}'>Algeria</option>
+              <option value='{"id":2016, "code":"AS"}'>American Samoa</option>
+              <option value='{"id":2020, "code":"AD"}'>Andorra</option>
+              <option value='{"id":2024, "code":"AO"}'>Angola</option>
+              <option value='{"id":2028, "code":"AG"}'>Antigua and Barbuda</option>
+              <option value='{"id":2031, "code":"AZ"}'>Azerbaijan</option>
+              <option value='{"id":2032, "code":"AR"}'>Argentina</option>
+              <option value='{"id":2036, "code":"AU"}'>Australia</option>
+              <option value='{"id":2040, "code":"AT"}'>Austria</option>
+              <option value='{"id":2044, "code":"BS"}'>The Bahamas</option>
+              <option value='{"id":2048, "code":"BH"}'>Bahrain</option>
+              <option value='{"id":2050, "code":"BD"}'>Bangladesh</option>
+              <option value='{"id":2051, "code":"AM"}'>Armenia</option>
+              <option value='{"id":2052, "code":"BB"}'>Barbados</option>
+              <option value='{"id":2056, "code":"BE"}'>Belgium</option>
+              <option value='{"id":2064, "code":"BT"}'>Bhutan</option>
+              <option value='{"id":2068, "code":"BO"}'>Bolivia</option>
+              <option value='{"id":2070, "code":"BA"}'>Bosnia and Herzegovina</option>
+              <option value='{"id":2072, "code":"BW"}'>Botswana</option>
+              <option value='{"id":2076, "code":"BR"}'>Brazil</option>
+              <option value='{"id":2084, "code":"BZ"}'>Belize</option>
+              <option value='{"id":2090, "code":"SB"}'>Solomon Islands</option>
+              <option value='{"id":2096, "code":"BN"}'>Brunei</option>
+              <option value='{"id":2100, "code":"BG"}'>Bulgaria</option>
+              <option value='{"id":2104, "code":"MM"}'>Myanmar (Burma)</option>
+              <option value='{"id":2108, "code":"BI"}'>Burundi</option>
+              <option value='{"id":2112, "code":"BY"}'>Belarus</option>
+              <option value='{"id":2116, "code":"KH"}'>Cambodia</option>
+              <option value='{"id":2120, "code":"CM"}'>Cameroon</option>
+              <option value='{"id":2124, "code":"CA"}'>Canada</option>
+              <option value='{"id":2132, "code":"CV"}'>Cape Verde</option>
+              <option value='{"id":2140, "code":"CF"}'>Central African Republic</option>
+              <option value='{"id":2144, "code":"LK"}'>Sri Lanka</option>
+              <option value='{"id":2148, "code":"TD"}'>Chad</option>
+              <option value='{"id":2152, "code":"CL"}'>Chile</option>
+              <option value='{"id":2156, "code":"CN"}'>China</option>
+              <option value='{"id":2162, "code":"CX"}'>Christmas Island</option>
+              <option value='{"id":2166, "code":"CC"}'>Cocos (Keeling) Islands</option>
+              <option value='{"id":2170, "code":"CO"}'>Colombia</option>
+              <option value='{"id":2174, "code":"KM"}'>Comoros</option>
+              <option value='{"id":2178, "code":"CG"}'>Republic of the Congo</option>
+              <option value='{"id":2180, "code":"CD"}'>Democratic Republic of the Congo</option>
+              <option value='{"id":2184, "code":"CK"}'>Cook Islands</option>
+              <option value='{"id":2188, "code":"CR"}'>Costa Rica</option>
+              <option value='{"id":2191, "code":"HR"}'>Croatia</option>
+              <option value='{"id":2196, "code":"CY"}'>Cyprus</option>
+              <option value='{"id":2203, "code":"CZ"}'>Czechia</option>
+              <option value='{"id":2204, "code":"BJ"}'>Benin</option>
+              <option value='{"id":2208, "code":"DK"}'>Denmark</option>
+              <option value='{"id":2212, "code":"DM"}'>Dominica</option>
+              <option value='{"id":2214, "code":"DO"}'>Dominican Republic</option>
+              <option value='{"id":2218, "code":"EC"}'>Ecuador</option>
+              <option value='{"id":2222, "code":"SV"}'>El Salvador</option>
+              <option value='{"id":2226, "code":"GQ"}'>Equatorial Guinea</option>
+              <option value='{"id":2231, "code":"ET"}'>Ethiopia</option>
+              <option value='{"id":2232, "code":"ER"}'>Eritrea</option>
+              <option value='{"id":2233, "code":"EE"}'>Estonia</option>
+              <option value='{"id":2239, "code":"GS"}'>South Georgia and the South Sandwich Islands</option>
+              <option value='{"id":2242, "code":"FJ"}'>Fiji</option>
+              <option value='{"id":2246, "code":"FI"}'>Finland</option>
+              <option value='{"id":2250, "code":"FR"}'>France</option>
+              <option value='{"id":2258, "code":"PF"}'>French Polynesia</option>
+              <option value='{"id":2260, "code":"TF"}'>French Southern and Antarctic Lands</option>
+              <option value='{"id":2262, "code":"DJ"}'>Djibouti</option>
+              <option value='{"id":2266, "code":"GA"}'>Gabon</option>
+              <option value='{"id":2268, "code":"GE"}'>Georgia</option>
+              <option value='{"id":2270, "code":"GM"}'>The Gambia</option>
+              <option value='{"id":2276, "code":"DE"}'>Germany</option>
+              <option value='{"id":2288, "code":"GH"}'>Ghana</option>
+              <option value='{"id":2296, "code":"KI"}'>Kiribati</option>
+              <option value='{"id":2300, "code":"GR"}'>Greece</option>
+              <option value='{"id":2308, "code":"GD"}'>Grenada</option>
+              <option value='{"id":2316, "code":"GU"}'>Guam</option>
+              <option value='{"id":2320, "code":"GT"}'>Guatemala</option>
+              <option value='{"id":2324, "code":"GN"}'>Guinea</option>
+              <option value='{"id":2328, "code":"GY"}'>Guyana</option>
+              <option value='{"id":2332, "code":"HT"}'>Haiti</option>
+              <option value='{"id":2334, "code":"HM"}'>Heard Island and McDonald Islands</option>
+              <option value='{"id":2336, "code":"VA"}'>Vatican City</option>
+              <option value='{"id":2340, "code":"HN"}'>Honduras</option>
+              <option value='{"id":2348, "code":"HU"}'>Hungary</option>
+              <option value='{"id":2352, "code":"IS"}'>Iceland</option>
+              <option value='{"id":2356, "code":"IN"}'>India</option>
+              <option value='{"id":2360, "code":"ID"}'>Indonesia</option>
+              <option value='{"id":2368, "code":"IQ"}'>Iraq</option>
+              <option value='{"id":2372, "code":"IE"}'>Ireland</option>
+              <option value='{"id":2376, "code":"IL"}'>Israel</option>
+              <option value='{"id":2380, "code":"IT"}'>Italy</option>
+              <option value='{"id":2384, "code":"CI"}'>Cote d'Ivoire</option>
+              <option value='{"id":2388, "code":"JM"}'>Jamaica</option>
+              <option value='{"id":2392, "code":"JP"}'>Japan</option>
+              <option value='{"id":2398, "code":"KZ"}'>Kazakhstan</option>
+              <option value='{"id":2400, "code":"JO"}'>Jordan</option>
+              <option value='{"id":2404, "code":"KE"}'>Kenya</option>
+              <option value='{"id":2410, "code":"KR"}'>South Korea</option>
+              <option value='{"id":2414, "code":"KW"}'>Kuwait</option>
+              <option value='{"id":2417, "code":"KG"}'>Kyrgyzstan</option>
+              <option value='{"id":2418, "code":"LA"}'>Laos</option>
+              <option value='{"id":2422, "code":"LB"}'>Lebanon</option>
+              <option value='{"id":2426, "code":"LS"}'>Lesotho</option>
+              <option value='{"id":2428, "code":"LV"}'>Latvia</option>
+              <option value='{"id":2430, "code":"LR"}'>Liberia</option>
+              <option value='{"id":2434, "code":"LY"}'>Libya</option>
+              <option value='{"id":2438, "code":"LI"}'>Liechtenstein</option>
+              <option value='{"id":2440, "code":"LT"}'>Lithuania</option>
+              <option value='{"id":2442, "code":"LU"}'>Luxembourg</option>
+              <option value='{"id":2450, "code":"MG"}'>Madagascar</option>
+              <option value='{"id":2454, "code":"MW"}'>Malawi</option>
+              <option value='{"id":2458, "code":"MY"}'>Malaysia</option>
+              <option value='{"id":2462, "code":"MV"}'>Maldives</option>
+              <option value='{"id":2466, "code":"ML"}'>Mali</option>
+              <option value='{"id":2470, "code":"MT"}'>Malta</option>
+              <option value='{"id":2478, "code":"MR"}'>Mauritania</option>
+              <option value='{"id":2480, "code":"MU"}'>Mauritius</option>
+              <option value='{"id":2484, "code":"MX"}'>Mexico</option>
+              <option value='{"id":2492, "code":"MC"}'>Monaco</option>
+              <option value='{"id":2496, "code":"MN"}'>Mongolia</option>
+              <option value='{"id":2498, "code":"MD"}'>Moldova</option>
+              <option value='{"id":2499, "code":"ME"}'>Montenegro</option>
+              <option value='{"id":2504, "code":"MA"}'>Morocco</option>
+              <option value='{"id":2508, "code":"MZ"}'>Mozambique</option>
+              <option value='{"id":2512, "code":"OM"}'>Oman</option>
+              <option value='{"id":2516, "code":"NA"}'>Namibia</option>
+              <option value='{"id":2520, "code":"NR"}'>Nauru</option>
+              <option value='{"id":2524, "code":"NP"}'>Nepal</option>
+              <option value='{"id":2528, "code":"NL"}'>Netherlands</option>
+              <option value='{"id":2531, "code":"CW"}'>Curacao</option>
+              <option value='{"id":2534, "code":"SX"}'>Sint Maarten</option>
+              <option value='{"id":2535, "code":"BQ"}'>Caribbean Netherlands</option>
+              <option value='{"id":2540, "code":"NC"}'>New Caledonia</option>
+              <option value='{"id":2548, "code":"VU"}'>Vanuatu</option>
+              <option value='{"id":2554, "code":"NZ"}'>New Zealand</option>
+              <option value='{"id":2558, "code":"NI"}'>Nicaragua</option>
+              <option value='{"id":2562, "code":"NE"}'>Niger</option>
+              <option value='{"id":2566, "code":"NG"}'>Nigeria</option>
+              <option value='{"id":2570, "code":"NU"}'>Niue</option>
+              <option value='{"id":2574, "code":"NF"}'>Norfolk Island</option>
+              <option value='{"id":2578, "code":"NO"}'>Norway</option>
+              <option value='{"id":2580, "code":"MP"}'>Northern Mariana Islands</option>
+              <option value='{"id":2581, "code":"UM"}'>United States Minor Outlying Islands</option>
+              <option value='{"id":2583, "code":"FM"}'>Federated States of Micronesia</option>
+              <option value='{"id":2584, "code":"MH"}'>Marshall Islands</option>
+              <option value='{"id":2585, "code":"PW"}'>Palau</option>
+              <option value='{"id":2586, "code":"PK"}'>Pakistan</option>
+              <option value='{"id":2591, "code":"PA"}'>Panama</option>
+              <option value='{"id":2598, "code":"PG"}'>Papua New Guinea</option>
+              <option value='{"id":2600, "code":"PY"}'>Paraguay</option>
+              <option value='{"id":2604, "code":"PE"}'>Peru</option>
+              <option value='{"id":2608, "code":"PH"}'>Philippines</option>
+              <option value='{"id":2612, "code":"PN"}'>Pitcairn Islands</option>
+              <option value='{"id":2616, "code":"PL"}'>Poland</option>
+              <option value='{"id":2620, "code":"PT"}'>Portugal</option>
+              <option value='{"id":2624, "code":"GW"}'>Guinea-Bissau</option>
+              <option value='{"id":2626, "code":"TL"}'>Timor-Leste</option>
+              <option value='{"id":2634, "code":"QA"}'>Qatar</option>
+              <option value='{"id":2642, "code":"RO"}'>Romania</option>
+              <option value='{"id":2643, "code":"RU"}'>Russia</option>
+              <option value='{"id":2646, "code":"RW"}'>Rwanda</option>
+              <option value='{"id":2654, "code":"SH"}'>Saint Helena' Ascension and Tristan da Cunha</option>
+              <option value='{"id":2659, "code":"KN"}'>Saint Kitts and Nevis</option>
+              <option value='{"id":2662, "code":"LC"}'>Saint Lucia</option>
+              <option value='{"id":2666, "code":"PM"}'>Saint Pierre and Miquelon</option>
+              <option value='{"id":2670, "code":"VC"}'>Saint Vincent and the Grenadines</option>
+              <option value='{"id":2674, "code":"SM"}'>San Marino</option>
+              <option value='{"id":2678, "code":"ST"}'>Sao Tome and Principe</option>
+              <option value='{"id":2682, "code":"SA"}'>Saudi Arabia</option>
+              <option value='{"id":2686, "code":"SN"}'>Senegal</option>
+              <option value='{"id":2688, "code":"RS"}'>Serbia</option>
+              <option value='{"id":2690, "code":"SC"}'>Seychelles</option>
+              <option value='{"id":2694, "code":"SL"}'>Sierra Leone</option>
+              <option value='{"id":2702, "code":"SG"}'>Singapore</option>
+              <option value='{"id":2703, "code":"SK"}'>Slovakia</option>
+              <option value='{"id":2704, "code":"VN"}'>Vietnam</option>
+              <option value='{"id":2705, "code":"SI"}'>Slovenia</option>
+              <option value='{"id":2706, "code":"SO"}'>Somalia</option>
+              <option value='{"id":2710, "code":"ZA"}'>South Africa</option>
+              <option value='{"id":2716, "code":"ZW"}'>Zimbabwe</option>
+              <option value='{"id":2724, "code":"ES"}'>Spain</option>
+              <option value='{"id":2740, "code":"SR"}'>Suriname</option>
+              <option value='{"id":2748, "code":"SZ"}'>Swaziland</option>
+              <option value='{"id":2752, "code":"SE"}'>Sweden</option>
+              <option value='{"id":2756, "code":"CH"}'>Switzerland</option>
+              <option value='{"id":2762, "code":"TJ"}'>Tajikistan</option>
+              <option value='{"id":2764, "code":"TH"}'>Thailand</option>
+              <option value='{"id":2768, "code":"TG"}'>Togo</option>
+              <option value='{"id":2772, "code":"TK"}'>Tokelau</option>
+              <option value='{"id":2776, "code":"TO"}'>Tonga</option>
+              <option value='{"id":2780, "code":"TT"}'>Trinidad and Tobago</option>
+              <option value='{"id":2784, "code":"AE"}'>United Arab Emirates</option>
+              <option value='{"id":2788, "code":"TN"}'>Tunisia</option>
+              <option value='{"id":2792, "code":"TR"}'>Turkey</option>
+              <option value='{"id":2795, "code":"TM"}'>Turkmenistan</option>
+              <option value='{"id":2798, "code":"TV"}'>Tuvalu</option>
+              <option value='{"id":2800, "code":"UG"}'>Uganda</option>
+              <option value='{"id":2804, "code":"UA"}'>Ukraine</option>
+              <option value='{"id":2807, "code":"MK"}'>Macedonia (FYROM)</option>
+              <option value='{"id":2818, "code":"EG"}'>Egypt</option>
+              <option value='{"id":2826, "code":"GB"}'>United Kingdom</option>
+              <option value='{"id":2831, "code":"GG"}'>Guernsey</option>
+              <option value='{"id":2832, "code":"JE"}'>Jersey</option>
+              <option value='{"id":2834, "code":"TZ"}'>Tanzania</option>
+              <option value='{"id":2840, "code":"US"}'>United States</option>
+              <option value='{"id":2854, "code":"BF"}'>Burkina Faso</option>
+              <option value='{"id":2858, "code":"UY"}'>Uruguay</option>
+              <option value='{"id":2860, "code":"UZ"}'>Uzbekistan</option>
+              <option value='{"id":2862, "code":"VE"}'>Venezuela</option>
+              <option value='{"id":2876, "code":"WF"}'>Wallis and Futuna</option>
+              <option value='{"id":2882, "code":"WS"}'>Samoa</option>
+              <option value='{"id":2887, "code":"YE"}'>Yemen</option>
+              <option value='{"id":2894, "code":"ZM"}'>Zambia</option>
+            </select>
+            <br>
+    </div>
+    <div class="block">
+        <label for="input"><b>Default Bid</b></label><br>
+            <input class="width-100" id="bid" placeholder="0.01" type="number" step="0.01" min="0" name="defaultBid" required><br>
+    </div>
+    <div class="block">
+        <input class="blue" type="submit" value="Save">
+    </div>
+    </form>
+    
+</body>
+
+</html>
